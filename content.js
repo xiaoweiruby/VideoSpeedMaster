@@ -144,7 +144,14 @@ const observer = new MutationObserver(function(mutations) {
 });
 
 // Start observing the document with the configured parameters
-observer.observe(document.body, { childList: true, subtree: true });
+if (document.body) {
+  observer.observe(document.body, { childList: true, subtree: true });
+} else {
+  // If body is not available yet, wait for it
+  document.addEventListener('DOMContentLoaded', function() {
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+}
 
 // Apply speed settings initially and periodically (for dynamic content)
 applySpeedToVideos();

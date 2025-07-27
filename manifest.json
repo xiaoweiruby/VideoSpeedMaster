@@ -4,6 +4,19 @@
   "version": "1.0",
   "description": "Control video playback speed from 0.5x to 16x across different platforms",
   "permissions": ["activeTab", "storage"],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.bilibili.com/*",
+    "*://*.vimeo.com/*",
+    "*://*.netflix.com/*",
+    "*://*.amazon.com/*/video/*",
+    "*://*.amazon.com/*/tv/*",
+    "*://*.primevideo.com/*",
+    "*://*.iqiyi.com/*",
+    "*://*.v.qq.com/*",
+    "*://*.youku.com/*",
+    "*://*.tudou.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -15,7 +28,19 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.bilibili.com/*",
+        "*://*.vimeo.com/*",
+        "*://*.netflix.com/*",
+        "*://*.amazon.com/*/video/*",
+        "*://*.amazon.com/*/tv/*",
+        "*://*.primevideo.com/*",
+        "*://*.iqiyi.com/*",
+        "*://*.v.qq.com/*",
+        "*://*.youku.com/*",
+        "*://*.tudou.com/*"
+      ],
       "js": ["content.js"]
     }
   ],
