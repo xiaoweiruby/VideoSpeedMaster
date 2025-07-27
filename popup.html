@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VideoSpeedMaster</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+      margin-top: 0;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .speed-control {
+      margin: 15px 0;
+    }
+    .speed-display {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      color: #2196F3;
+      margin: 10px 0;
+    }
+    .slider {
+      width: 100%;
+      margin: 10px 0;
+    }
+    .preset-speeds {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin: 15px 0;
+    }
+    .preset-btn {
+      padding: 5px 10px;
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .preset-btn:hover {
+      background-color: #d0d0d0;
+    }
+    .status {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 15px;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .toggle-slider {
+      background-color: #2196F3;
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>VideoSpeedMaster</h1>
+    
+    <div class="toggle-container">
+      <span>启用加速控制</span>
+      <label class="toggle">
+        <input type="checkbox" id="enableControl" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="speed-control">
+      <div class="speed-display"><span id="speedValue">1.0</span>x</div>
+      <input type="range" min="0.5" max="16" step="0.1" value="1.0" class="slider" id="speedSlider">
+    </div>
+    
+    <div class="preset-speeds">
+      <button class="preset-btn" data-speed="0.5">0.5x</button>
+      <button class="preset-btn" data-speed="1.0">1.0x</button>
+      <button class="preset-btn" data-speed="1.5">1.5x</button>
+      <button class="preset-btn" data-speed="2.0">2.0x</button>
+      <button class="preset-btn" data-speed="3.0">3.0x</button>
+      <button class="preset-btn" data-speed="4.0">4.0x</button>
+      <button class="preset-btn" data-speed="8.0">8.0x</button>
+      <button class="preset-btn" data-speed="16.0">16.0x</button>
+    </div>
+    
+    <div class="status" id="statusMessage">准备就绪</div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 
